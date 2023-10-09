@@ -1,1 +1,54 @@
-aa
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- CSS -->
+	<style>
+		li {
+			display: inline;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div>
+			<div>
+				<img src="./images/horo_logo.png" width="120"/>
+			</div>
+			<div>
+				<h1>{{ appName }}</h1>
+			</div>
+			<div>
+				{{ message }}
+			</div>
+			<div>
+				<h2>ベスト3</h2>
+			</div>
+			<div>
+				<ul>
+					<li v-for="horo in getBest3">
+						<img v-bind:src="horo.path" width="90"/>{{ horo.name }}:{{ horo.rank }}
+					</li>
+				</ul>
+			</div>
+			<div>
+				<h2>ワースト3</h2>
+			</div>
+			<div>
+				<ul>
+					<li v-for="horo in getWorst3">
+						<img v-bind:src="horo.path" width="90"/>{{ horo.name }}:{{ horo.rank }}
+					</li>
+				</ul>
+			</div>
+			<div>
+				<button v-on:click="shuffle">シャッフル</button>
+			</div>
+		</div>
+	</div>
+	<!-- JavaScript -->
+	<script src="//unpkg.com/vue@next" defer></script>
+	<script src="./custom.js" defer></script>
+</body>
+</html>
