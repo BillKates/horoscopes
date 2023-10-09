@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8"/>
+    <title>星座占いランキング</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- CSS -->
 	<style>
@@ -9,46 +10,46 @@
 			display: inline;
 		}
 	</style>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-	<div id="app">
-		<div>
-			<div>
-				<img src="./images/horo_logo.png" width="120"/>
-			</div>
-			<div>
+	<div id="app" class=".container">
+		<div class="p-3 text-center">
+			<div class="mb-3">
 				<h1>{{ appName }}</h1>
 			</div>
-			<div>
+			<div class="mb-3">
 				{{ message }}
 			</div>
-			<div>
+			<div class="mb-3 bg-success">
 				<h2>ベスト3</h2>
 			</div>
-			<div>
+			<div class="mb-3">
 				<ul>
 					<li v-for="horo in getBest3">
 						<img v-bind:src="horo.path" width="90"/>{{ horo.name }}:{{ horo.rank }}
 					</li>
 				</ul>
 			</div>
-			<div>
+			<div class="mb-3 bg-danger">
 				<h2>ワースト3</h2>
 			</div>
-			<div>
+			<div class="mb-3">
 				<ul>
 					<li v-for="horo in getWorst3">
 						<img v-bind:src="horo.path" width="90"/>{{ horo.name }}:{{ horo.rank }}
 					</li>
 				</ul>
 			</div>
-			<div>
-				<button v-on:click="shuffle">シャッフル</button>
+			<div class="mb-3">
+				<button v-on:click="shuffle" class="btn btn-primary">シャッフル</button>
 			</div>
 		</div>
 	</div>
 	<!-- JavaScript -->
-	<script src="//unpkg.com/vue@next" defer></script>
-	<script src="./custom.js" defer></script>
+    <script src="https://unpkg.com/vue@next" defer></script>
+	<script src="/js/bootstrap.bundle.min.js" defer></script>
+	<script src="main.js" defer></script>
 </body>
 </html>

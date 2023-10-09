@@ -1,3 +1,5 @@
+console.log("main.js!!");
+
 // 1, Vue.jsで扱うデータを用意する
 const myData = {
 	appName: "Horoscope Ranking",// アプリ名
@@ -25,33 +27,33 @@ const app = Vue.createApp({
 	},
 	created(){
 		console.log("created!!");// Vue.jsの初期化
+		this.shuffle();// シャッフル
 	},
-	// 省略
-    methods:{
-	    shuffle(){// 星座をシャッフルする関数
-		    console.log("shuffle!!");
-	    	// シャッフル
-		    for(let i=this.horos.length-1; 0<=i; i--){
-			    for(let j=0; j<i; j++){
-				    let rdm = Math.floor(Math.random()*i);
-				    let tmp = this.horos[rdm];
-				    this.horos[rdm] = this.horos[i];
-				    this.horos[i] = tmp;
-			    }
-		    }
-		    // ランキング
-		    for(let i=0; i<this.horos.length; i++){
-			    this.horos[i].rank = i + 1;
-		    }
-	    }
-    },
+	methods:{
+		shuffle(){// 星座を判定する処理
+			console.log("shuffle!!");
+			// シャッフル
+			for(let i=this.horos.length-1; 0<=i; i--){
+				for(let j=0; j<i; j++){
+					let rdm = Math.floor(Math.random()*i);
+					let tmp = this.horos[rdm];
+					this.horos[rdm] = this.horos[i];
+					this.horos[i] = tmp;
+				}
+			}
+			// ランキング
+			for(let i=0; i<this.horos.length; i++){
+				this.horos[i].rank = i + 1;
+			}
+		}
+	},
 	computed:{
-        getBest3(){
-            return this.horos.concat().slice(0, 3); 
-        },
-        getWorst3(){
-            return this.horos.concat().reverse().slice(0, 3);
-        }
-    }
+		getBest3(){
+			return this.horos.concat().slice(0, 3); 
+		},
+		getWorst3(){
+			return this.horos.concat().reverse().slice(0, 3);
+		}
+	}
 });
 app.mount("#app");// 3, Vue.jsを起動する
