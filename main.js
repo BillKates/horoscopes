@@ -48,11 +48,11 @@ const app = Vue.createApp({
 		}
 	},
 	computed:{
-		getBest3(){
-			return this.horos.concat().slice(0, 3); 
+		getBest6(){
+			return this.horos.concat().slice(0, 6); 
 		},
-		getWorst3(){
-			return this.horos.concat().reverse().slice(0, 3);
+		getWorst6(){
+			return this.horos.concat().reverse().slice(0, 6);
 		}
 	}
 });
