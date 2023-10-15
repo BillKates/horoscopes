@@ -1,50 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8"/>
-    <title>星座占いランキング</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- CSS -->
-	<style>
-		li {
-			display: inline;
-		}
-	</style>
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
+  <meta charset="UTF-8"/>
+  <title>星座占いランキング</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS -->
+  <style>
+    li {
+      display: inline;
+    }
+  </style>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-	<div id="app" class=".container">
-		<div class="p-3 text-center">
-			<div class="mb-3">
-				<h1>{{ appName }}</h1>
-			</div>
-			<div class="mb-3">
-				{{ message }}
-			</div>
-			<div class="mb-3 bg-success">
-				<h2>第 1 ～ 12 位</h2>
-			</div>
-			<div class="mb-3">
-				<ul>
-	 				<li v-for="horo in getBest12">
-						<div style="display: flex; align-items: center;">
-		  				<div style="margin-right: 10px;">
-							{{ horo.rank }}:{{ horo.name }}
-		  				</div>
-		  					<img v-bind:src="horo.path" width="90">
-						</div>
-	  				</li>
-				</ul>
-  			</div>		
-			<div class="mb-3">
-				<button v-on:click="shuffle" class="btn btn-primary">シャッフル</button>
-			</div>
-		</div>
-	</div>
-	<!-- JavaScript -->
-    <script src="https://unpkg.com/vue@next" defer></script>
-	<script src="/js/bootstrap.bundle.min.js" defer></script>
-	<script src="main.js" defer></script>
+  <div id="app" class="container">
+    <div class="p-3 text-center">
+      <div class="mb-3">
+        <h1>{{ appName }}</h1>
+      </div>
+      <div class="mb-3">
+        {{ message }}
+      </div>
+      <div class="mb-3 bg-success">
+        <h2>第 1 ～ 12 位</h2>
+      </div>
+      <div class="mb-3">
+        <label for="selectedHoro">星座選択:</label>
+        <select id="selectedHoro" v-model="selectedHoroscope">
+          <option v-for="horo in horos" :value="horo.name">{{ horo.name }}</option>
+        </select>
+        <button v-on:click="setSelectedHoroscope" class="btn btn-primary">選択した星座を1位に</button>
+        <button v-on:click="shuffle" class="btn btn-primary">シャッフル</button>
+      </div>
+      <div class="mb-3">
+        <ul>
+          <li v-for="horo in getBest12">
+            <div style="display: flex; align-items: center;">
+              <div style="margin-right: 10px;">
+                {{ horo.rank }}: {{ horo.name }}
+              </div>
+              <img v-bind:src="horo.path" width="90">
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- JavaScript -->
+  <script src="https://unpkg.com/vue@next" defer></script>
+  <script src="/js/bootstrap.bundle.min.js" defer></script>
+  <script src="main.js" defer></script>
 </body>
 </html>
